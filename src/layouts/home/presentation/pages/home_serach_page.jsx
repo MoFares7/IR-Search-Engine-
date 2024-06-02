@@ -56,19 +56,17 @@ function HomeSearchPage() {
   useEffect(() => {
     if (!queryValue) {
       setSuggestions([]);
-
     } else {
       dispatch(querySuggestionsService({
         dataset: selectedDataset === 'wikipedia' ? 'wiki' : 'antique',
         query: queryValue
       }));
     }
-
   }, [selectedDataset, queryValue]);
 
   useEffect(() => {
     if (suggestionData) {
-      setSuggestions(suggestionData.suggestions);
+      setSuggestions(suggestionData.suggestions.slice(0, 5));
     }
     if (suggestionError) {
       setErrorMessage(suggestionError.error || 'An error occurred while fetching suggestions');
@@ -101,7 +99,7 @@ function HomeSearchPage() {
               onSearch={handleSendQuery}
               isLoading={loadingQuery}
               loadingSuggestions={loadingSuggestionsAPI}
-              suggestions={suggestions}
+              suggestions={suggestions}  
             />
           </Card>
         </Grid>

@@ -161,7 +161,6 @@ const SearchField = ({ value, onChange, onSearch, isLoading, loadingSuggestions,
                                 // backgroundColor: 'red',
                                 display: 'flex',
                                 alignItems: 'center',
-                               
                                 pb: 5,
                                 width: '100%',
                         }}>
@@ -227,44 +226,42 @@ const SearchField = ({ value, onChange, onSearch, isLoading, loadingSuggestions,
 
                         {showSuggestions && (
 
-                                <Box sx={{  backgroundColor: 'blue' }}>
-                                        <Box
-                                                sx={{
-
-                                                        mt: -0.7,
-                                                        position: 'absolute',
-                                                        width: '100%',
-                                                        top: '50px',
-                                                        backgroundColor: colors.grey[200],
-                                                        borderRadius: 4,
-                                                        borderTopRightRadius: 0,
-                                                        borderBottomRightRadius: suggestions.length > 0 ? 0 : 0,
-                                                        borderTopLeftRadius: 0,
-                                                        borderBottomLeftRadius: suggestions.length > 0 ? 0 : 0,
-                                                }}
-                                        >
-                                                {loadingSuggestions ? (
-                                                        <MDTypography sx={{ m: 1 }} typography={typography.body2}>Loading...</MDTypography>
-                                                ) : (
-                                                        suggestions.map((suggestion, index) => (
-                                                                <Box
-                                                                        key={index}
-                                                                        sx={{
-                                                                                fontSize: '15px',
-                                                                                py: '5px',
-                                                                                px: '10px',
-                                                                                cursor: 'pointer',
-                                                                                '&:hover': {
-                                                                                        backgroundColor: colors.grey[200],
-                                                                                },
-                                                                        }}
-                                                                        onClick={() => handleSuggestionClick(suggestion)}
-                                                                >
-                                                                        {suggestion}
-                                                                </Box>
-                                                        ))
-                                                )}
-                                        </Box>
+                                <Box
+                                        sx={{
+                                                mb: 5,
+                                                mt: -0.7,
+                                                position: 'absolute',
+                                                width: '100%',
+                                                top: '50px',
+                                                backgroundColor: colors.grey[200],
+                                                borderRadius: 4,
+                                                borderTopRightRadius: 0,
+                                                borderBottomRightRadius: suggestions.length > 0 ? 0 : 0,
+                                                borderTopLeftRadius: 0,
+                                                borderBottomLeftRadius: suggestions.length > 0 ? 0 : 0,
+                                        }}
+                                >
+                                        {loadingSuggestions ? (
+                                                <MDTypography sx={{ m: 1 }} typography={typography.body2}>Loading...</MDTypography>
+                                        ) : (
+                                                suggestions.map((suggestion, index) => (
+                                                        <Box
+                                                                key={index}
+                                                                sx={{
+                                                                        fontSize: '15px',
+                                                                        py: '5px',
+                                                                        px: '10px',
+                                                                        cursor: 'pointer',
+                                                                        '&:hover': {
+                                                                                backgroundColor: colors.grey[200],
+                                                                        },
+                                                                }}
+                                                                onClick={() => handleSuggestionClick(suggestion)}
+                                                        >
+                                                                {suggestion}
+                                                        </Box>
+                                                ))
+                                        )}
                                 </Box>
                         )}
                 </Box>

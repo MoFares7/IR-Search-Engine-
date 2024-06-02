@@ -6,7 +6,7 @@ import Lottie from 'lottie-react';
 import results from '../../../../assets/lottie/results.json';
 import typography from '../../../../assets/theme/base/typography';
 import ResultCard from '../components/result_card';
-import emptyData from '../../../../assets/lottie/empty.json'
+import emptyData from '../../../../assets/lottie/empty.json';
 
 const ResultPage = () => {
         const { data } = useSelector(state => state.queryService);
@@ -21,7 +21,7 @@ const ResultPage = () => {
                         </Box>
                         <Grid container spacing={2} sx={{ p: 3, justifyContent: 'center', textAlign: 'center' }}>
                                 {data && data.length > 0 ? (
-                                        data.map((item) => (
+                                        data.slice(0, 25).map((item) => (
                                                 <Box sx={{ width: '75%' }} key={item._id}>
                                                         <ResultCard
                                                                 id={item._id}
@@ -35,14 +35,13 @@ const ResultPage = () => {
                                         <Box sx={{
                                                 display: 'flex',
                                                 flexDirection: 'column',
-                                                textAlign: 'center', alignItems: 'center', justifyContent: 'cetner'
+                                                textAlign: 'center', alignItems: 'center', justifyContent: 'center'
                                         }}>
                                                 <Lottie autoPlay animationData={emptyData} style={{ width: 280, height: 280 }} />
-                                                <Typography typography={typography.body2} sx={{  color: colors.white.main }}>
+                                                <Typography typography={typography.body2} sx={{ color: colors.white.main }}>
                                                         No results found. Please try a different query
                                                 </Typography>
-                                        </Box >
-
+                                        </Box>
                                 )}
                         </Grid>
                 </Box>
