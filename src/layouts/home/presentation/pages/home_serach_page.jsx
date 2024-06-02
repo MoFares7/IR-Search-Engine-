@@ -41,7 +41,7 @@ function HomeSearchPage() {
       query: queryValue
     })).then((action) => {
       if (queryService.fulfilled.match(action)) {
-        navigate('/result');
+        navigate('/result', { state: { selectedDataset, selectedModel } });
       } else {
         setErrorMessage(action.payload.detail.msg || 'An error occurred');
         setErrorSnackbarOpen(true);
@@ -90,7 +90,7 @@ function HomeSearchPage() {
         <Grid container spacing={1} justifyContent="center" alignItems="center" height="100%">
           <Card sx={{ px: 5, width: '70%', backgroundColor: '#2f2f2f' }}>
             <Box sx={{ py: 5, display: 'flex', justifyContent: 'center' }}>
-              <Typography typography={typography.d4} sx={{ pb: 2, color: colors.white.main, fontWeight: 'bold' }}>IR Engine</Typography>
+              <Typography typography={typography.d4} sx={{ pb: 2, color: colors.white.main, fontWeight: 'bold' }}>Search Engine</Typography>
             </Box>
             <SearchField
               value={queryValue}

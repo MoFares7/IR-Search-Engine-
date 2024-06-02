@@ -1,11 +1,11 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://6476-95-212-181-246.ngrok-free.app';
+const BASE_URL = 'https://f3b6-31-9-106-8.ngrok-free.app';
 
 const axiosInstance = axios.create({
         baseURL: BASE_URL,
         headers: {
-                'Content-Type': 'application/json', 
+                'Content-Type': 'application/json',
         },
 });
 

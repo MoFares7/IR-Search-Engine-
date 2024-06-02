@@ -1,13 +1,11 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import api from '../../../core/network/api';
-import axios from 'axios';
 
-export const querySuggestionsService = createAsyncThunk(
-        'querySuggestionsService/query',
-        async ({ dataset, query }, { rejectWithValue }) => {
+export const querySimilaryResultService = createAsyncThunk(
+        'similar-results',
+        async ({ payload }, { rejectWithValue }) => {
                 try {
-                        console.log("Payload sent to the server:", { dataset, query });
-                        const response = await api.post('/query-suggestions', { dataset, query });
+                        const response = await api.post('/similar-results', payload);
                         console.log("Response from server:", response.data);
                         return response.data;
                 } catch (error) {
@@ -25,29 +23,30 @@ export const querySuggestionsService = createAsyncThunk(
         }
 );
 
-const querySuggestionsServiceSlice = createSlice({
-        name: 'querySuggestionsService',
+const querySimilaryResultServiceSlice = createSlice({
+        name: 'querySimilaryResultService',
         initialState: {
                 data: null,
+                similarityData: null,
                 loading: false,
                 error: null,
         },
         reducers: {},
         extraReducers: (builder) => {
                 builder
-                        .addCase(querySuggestionsService.pending, (state) => {
+                        .addCase(querySimilaryResultService.pending, (state) => {
                                 state.loading = true;
                         })
-                        .addCase(querySuggestionsService.fulfilled, (state, action) => {
+                        .addCase(querySimilaryResultService.fulfilled, (state, action) => {
                                 state.loading = false;
                                 state.error = null;
-                                state.data = action.payload;
+                                state.similarityData = action.payload;
                         })
-                        .addCase(querySuggestionsService.rejected, (state, action) => {
+                        .addCase(querySimilaryResultService.rejected, (state, action) => {
                                 state.loading = false;
                                 state.error = action.payload.error;
                         });
         },
 });
 
-export default querySuggestionsServiceSlice.reducer;
+export default querySimilaryResultServiceSlice.reducer;
