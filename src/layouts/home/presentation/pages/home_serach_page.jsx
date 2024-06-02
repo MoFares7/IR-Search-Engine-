@@ -56,13 +56,13 @@ function HomeSearchPage() {
   useEffect(() => {
     if (!queryValue) {
       setSuggestions([]);
-    } else {
+    } else if (queryValue.length > 2) {
       dispatch(querySuggestionsService({
         dataset: selectedDataset === 'wikipedia' ? 'wiki' : 'antique',
         query: queryValue
       }));
     }
-  }, [selectedDataset, queryValue]);
+  }, [selectedDataset, queryValue, dispatch]);
 
   useEffect(() => {
     if (suggestionData) {
@@ -75,7 +75,6 @@ function HomeSearchPage() {
   }, [suggestionData, suggestionError]);
 
   console.log("length: " + suggestions.length);
-
   return (
     <PageLayout>
       <MDBox
@@ -99,7 +98,7 @@ function HomeSearchPage() {
               onSearch={handleSendQuery}
               isLoading={loadingQuery}
               loadingSuggestions={loadingSuggestionsAPI}
-              suggestions={suggestions}  
+              suggestions={suggestions}
             />
           </Card>
         </Grid>
