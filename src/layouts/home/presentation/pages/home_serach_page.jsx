@@ -91,7 +91,7 @@ function HomeSearchPage() {
       <MenuAppBar setSelectedDataset={setSelectedDataset} setSelectedModel={setSelectedModel} />
       <MDBox px={1} width="100%" height="90vh" mx="auto">
         <Grid container spacing={1} justifyContent="center" alignItems="center" height="100%">
-          <Card sx={{ width: '70%', backgroundColor: '#2f2f2f' }}>
+          <Card sx={{ px: 5, width: '70%', backgroundColor: '#2f2f2f' }}>
             <Box sx={{ py: 5, display: 'flex', justifyContent: 'center' }}>
               <Typography typography={typography.d4} sx={{ pb: 2, color: colors.white.main, fontWeight: 'bold' }}>IR Engine</Typography>
             </Box>
