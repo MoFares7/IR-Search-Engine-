@@ -85,7 +85,7 @@ const ResultCard = ({ id, doc_id, doc_content, index, cluster, onSimilrtyClick, 
                                         onClick={handleButtonClick}
                                         sx={{
                                                 backgroundColor: colors.transparent.main,
-                                                border: `1px solid ${colors.gradients.info.state}`,
+                                                border: `1px solid ${colors.white.main}`,
                                                 color: colors.white.main,
                                                 '&:hover': {
                                                         border: `1px solid ${colors.gradients.info.main}`,
