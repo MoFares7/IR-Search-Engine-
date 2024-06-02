@@ -7,7 +7,7 @@ export const queryService = createAsyncThunk(
         async ({ dataset, model, query }, { rejectWithValue }) => {
                 try {
                         console.log("Payload sent to the server:", { dataset, model, query });
-                        const response = await axios.post('https://2231-185-183-33-218.ngrok-free.app/query', { dataset, model, query });
+                        const response = await api.post('/query', { dataset, model, query });
                         console.log("Response from server:", response.data);
                         return response.data;
                 } catch (error) {

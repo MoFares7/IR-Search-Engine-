@@ -68,6 +68,7 @@ const SearchField = ({ value, onChange, onSearch, isLoading, loadingSuggestions,
                                 <Button
                                         variant="contained"
                                         onClick={onSearch}
+                                        disabled={value === null || value === ''}
                                         sx={{
                                                 height: 45,
                                                 backgroundColor: colors.gradients.info.state,
@@ -76,11 +77,17 @@ const SearchField = ({ value, onChange, onSearch, isLoading, loadingSuggestions,
                                                 borderBottomLeftRadius: 0,
                                                 borderTopRightRadius: 16,
                                                 borderBottomRightRadius: suggestions.length > 0 ? 0 : 0,
-                                                marginLeft: 0
+                                                marginLeft: 0,
+                                                '&:disabled': {
+                                                        backgroundColor: colors.gradients.info.state,
+                                                        color: colors.white.main,
+                                                          cursor: 'not-allowed' 
+                                                }
                                         }}
                                 >
                                         {isLoading ? <CircularProgress size={24} sx={{ color: colors.white.main }} /> : 'Search'}
                                 </Button>
+
                                 {showSuggestions && suggestions.length > 0 && (
                                         <Box
                                                 sx={{
