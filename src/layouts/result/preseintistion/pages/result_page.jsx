@@ -15,7 +15,7 @@
 
 // const ResultPage = () => {
 //         const dispatch = useDispatch();
-//         const { data } = useSelector(state => state.queryService);
+//         const { data = [] } = useSelector(state => state.queryService);
 //         const loadingData = useSelector(state => state.querySimilaryResultService.loading);
 //         const location = useLocation();
 //         const navigate = useNavigate();
@@ -38,7 +38,7 @@
 //                         }
 //                 })).then((action) => {
 //                         if (action.payload && action.payload.length > 0) {
-//                                 navigate('/similarty-result', { state: { similarityData: action.payload } });
+//                                 navigate('/similarty-result', { state: { selectedDataset, similarityData: action.payload } });
 //                         } else {
 //                                 setErrorMessage(action.payload.detail.msg || 'An error occurred');
 //                                 setErrorSnackbarOpen(true);
@@ -66,7 +66,7 @@
 //                                 </Box>
 //                         </Box>
 //                         <Grid container spacing={2} sx={{ p: 3, justifyContent: 'center', textAlign: 'center' }}>
-//                                 {displayedData && displayedData.length > 0 ? (
+//                                 {displayedData.length > 0 ? (
 //                                         displayedData.map((item) => (
 //                                                 <Box sx={{ width: '75%' }} key={item._id}>
 //                                                         <ResultCard
@@ -94,7 +94,7 @@
 //                                         </Box>
 //                                 )}
 //                         </Grid>
-//                         {data && data.length > 0 && (
+//                         {data.length > 0 && (
 //                                 <Pagination
 //                                         count={pageCount}
 //                                         page={currentPage}
@@ -133,7 +133,7 @@ const ITEMS_PER_PAGE = 10;
 
 const ResultPage = () => {
         const dispatch = useDispatch();
-        const { data = [] } = useSelector(state => state.queryService); 
+        const { data = [] } = useSelector(state => state.queryService);
         const loadingData = useSelector(state => state.querySimilaryResultService.loading);
         const location = useLocation();
         const navigate = useNavigate();
@@ -147,7 +147,7 @@ const ResultPage = () => {
                 setLoadingCard(id);
                 dispatch(querySimilaryResultService({
                         payload: {
-                                dataset: selectedDataset === 'wikipedia' ? 'wiki' : 'antique',
+                                dataset: selectedDataset || 'default',  // Provide a default value if undefined
                                 id,
                                 doc_id,
                                 doc_content,
@@ -156,9 +156,9 @@ const ResultPage = () => {
                         }
                 })).then((action) => {
                         if (action.payload && action.payload.length > 0) {
-                                navigate('/similarty-result', { state: { similarityData: action.payload } });
+                                navigate('/similarty-result', { state: { selectedDataset, similarityData: action.payload, cluster } });
                         } else {
-                                setErrorMessage(action.payload.detail.msg || 'An error occurred');
+                                setErrorMessage(action.payload?.detail?.msg || 'An error occurred');
                                 setErrorSnackbarOpen(true);
                         }
                 });
