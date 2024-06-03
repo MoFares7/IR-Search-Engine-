@@ -115,7 +115,7 @@ const SimilartyResultPage = () => {
         const location = useLocation();
         const { selectedDataset, similarityData, cluster } = location.state || {};
         const [currentPage, setCurrentPage] = useState(1);
-        const [isShowTopics, setIsShowTopics] = useState(1);
+        const [isShowTopics, setIsShowTopics] = useState(false);
         const [topics, setTopics] = useState([]);
         const loading = useSelector((state) => state.queryTopics.loading);
 
@@ -168,7 +168,7 @@ const SimilartyResultPage = () => {
                         </Box>
                         {isShowTopics ? (
                                 topics.length > 0 && (
-                                        <Box  sx={{px:3}}>
+                                        <Box sx={{ px: 3 }}>
                                                 {topics.map((topic, index) => (
                                                         <TopicsCard
                                                                 key={index}
