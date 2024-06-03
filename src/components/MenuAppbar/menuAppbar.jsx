@@ -100,7 +100,21 @@ const MenuAppBar = ({ setSelectedDataset, setSelectedModel }) => {
                                                                 checked={checkedItems.antique}
                                                                 onChange={handleCheckboxChange}
                                                                 name="antique"
-                                                                // sx={{ color: colors.black.main }}
+                                                                sx={{
+                                                                        color: colors.black.main,
+                                                                        '&.Mui-checked': {
+                                                                                color: colors.black.main,
+                                                                        },
+                                                                        '&.MuiCheckbox-root': {
+                                                                                color: colors.black.main,
+                                                                        },
+                                                                        '&.MuiCheckbox-root.Mui-checked': {
+                                                                                color: colors.black.main,
+                                                                        },
+                                                                        '& .MuiSvgIcon-root': {
+                                                                                fill: colors.black.main,
+                                                                        },
+                                                                }}
                                                         />
                                                 }
                                                 label="ANTIQUE"
@@ -113,6 +127,21 @@ const MenuAppBar = ({ setSelectedDataset, setSelectedModel }) => {
                                                                 checked={checkedItems.wikipedia}
                                                                 onChange={handleCheckboxChange}
                                                                 name="wikipedia"
+                                                                sx={{
+                                                                        color: colors.black.main,
+                                                                        '&.Mui-checked': {
+                                                                                color: colors.black.main,
+                                                                        },
+                                                                        '&.MuiCheckbox-root': {
+                                                                                color: colors.black.main,
+                                                                        },
+                                                                        '&.MuiCheckbox-root.Mui-checked': {
+                                                                                color: colors.black.main,
+                                                                        },
+                                                                        '& .MuiSvgIcon-root': {
+                                                                                fill: colors.black.main,
+                                                                        },
+                                                                }}
                                                         />
                                                 }
                                                 label="WIKIPEDIA"
@@ -134,6 +163,21 @@ const MenuAppBar = ({ setSelectedDataset, setSelectedModel }) => {
                                                                         checked={subMenuCheckedItems.tfidf}
                                                                         onChange={handleSubMenuCheckboxChange}
                                                                         name="tfidf"
+                                                                        sx={{
+                                                                                color: colors.black.main,
+                                                                                '&.Mui-checked': {
+                                                                                        color: colors.black.main,
+                                                                                },
+                                                                                '&.MuiCheckbox-root': {
+                                                                                        color: colors.black.main,
+                                                                                },
+                                                                                '&.MuiCheckbox-root.Mui-checked': {
+                                                                                        color: colors.black.main,
+                                                                                },
+                                                                                '& .MuiSvgIcon-root': {
+                                                                                        fill: colors.black.main,
+                                                                                },
+                                                                        }}
                                                                 />
                                                         }
                                                         label="TF-IDF"
@@ -146,6 +190,21 @@ const MenuAppBar = ({ setSelectedDataset, setSelectedModel }) => {
                                                                         checked={subMenuCheckedItems.embedding}
                                                                         onChange={handleSubMenuCheckboxChange}
                                                                         name="embedding"
+                                                                        sx={{
+                                                                                color: colors.black.main,
+                                                                                '&.Mui-checked': {
+                                                                                        color: colors.black.main,
+                                                                                },
+                                                                                '&.MuiCheckbox-root': {
+                                                                                        color: colors.black.main,
+                                                                                },
+                                                                                '&.MuiCheckbox-root.Mui-checked': {
+                                                                                        color: colors.black.main,
+                                                                                },
+                                                                                '& .MuiSvgIcon-root': {
+                                                                                        fill: colors.black.main,
+                                                                                },
+                                                                        }}
                                                                 />
                                                         }
                                                         label="EMBEDDING"

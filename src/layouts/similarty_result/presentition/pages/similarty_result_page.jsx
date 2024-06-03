@@ -61,7 +61,7 @@ const SimilartyResultPage = () => {
                                         count={pageCount}
                                         page={currentPage}
                                         onChange={handlePageChange}
-                                        sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}
+                                        sx={{ display: 'flex', justifyContent: 'center', m: 4 }}
                                 />
                         )}
                 </Box>
