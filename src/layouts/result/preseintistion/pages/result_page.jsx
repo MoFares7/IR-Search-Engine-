@@ -78,7 +78,7 @@ const ResultPage = () => {
                                                 textAlign: 'center', alignItems: 'center', justifyContent: 'center'
                                         }}>
                                                 <Lottie autoPlay animationData={emptyData} style={{ width: 280, height: 280 }} />
-                                                <Typography typography={typography.body2} sx={{ color: colors.white.main }}>
+                                                <Typography typography={typography.body2} sx={{ color: colors.black.main }}>
                                                         No results found. Please try a different query
                                                 </Typography>
                                         </Box>
