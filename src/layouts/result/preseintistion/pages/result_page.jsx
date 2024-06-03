@@ -147,7 +147,7 @@ const ResultPage = () => {
                 setLoadingCard(id);
                 dispatch(querySimilaryResultService({
                         payload: {
-                                dataset: selectedDataset || 'default',  // Provide a default value if undefined
+                                dataset: selectedDataset === 'wikipedia' ? 'wiki' : 'antique',
                                 id,
                                 doc_id,
                                 doc_content,
