@@ -40,12 +40,12 @@ const SearchField = ({ value, onChange, onSearch, isLoading, loadingSuggestions,
                                                         </InputAdornment>
                                                 ),
                                                 style: {
-                                                        color: colors.white.main, // Color of the input text
+                                                        color: colors.white.main,
                                                 },
                                         }}
                                         inputProps={{
                                                 style: {
-                                                        color: colors.white.main, // Color of the placeholder text
+                                                        color: colors.white.main,
                                                 },
                                         }}
                                         sx={{
@@ -106,9 +106,9 @@ const SearchField = ({ value, onChange, onSearch, isLoading, loadingSuggestions,
                                                 backgroundColor: colors.black.main,
                                                 borderRadius: 4,
                                                 borderTopRightRadius: 0,
-                                                borderBottomRightRadius: suggestions.length > 0 ? 0 : 0,
+                                                borderBottomRightRadius: suggestions.length > 0 ? 15 : 0,
                                                 borderTopLeftRadius: 0,
-                                                borderBottomLeftRadius: suggestions.length > 0 ? 0 : 0,
+                                                borderBottomLeftRadius: suggestions.length > 0 ? 15 : 0,
                                         }}
                                 >
                                         {loadingSuggestions ? (

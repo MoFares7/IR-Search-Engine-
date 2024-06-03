@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Card, Box, Typography, Snackbar, Grid } from '@mui/material';
@@ -49,20 +49,21 @@ function HomeSearchPage() {
     });
   };
 
+  const debouncedFetchSuggestions = useCallback(debounce((query) => {
+    dispatch(querySuggestionsService({
+      dataset: selectedDataset === 'wikipedia' ? 'wiki' : 'antique',
+      query: query
+    }));
+  }, 1200), [dispatch, selectedDataset]);
+
   const handleQueryChange = (newQueryValue) => {
     setQueryValue(newQueryValue);
-  };
-
-  useEffect(() => {
-    if (!queryValue) {
+    if (!newQueryValue) {
       setSuggestions([]);
-    } else if (queryValue.length > 2) {
-      dispatch(querySuggestionsService({
-        dataset: selectedDataset === 'wikipedia' ? 'wiki' : 'antique',
-        query: queryValue
-      }));
+    } else if (newQueryValue.length > 2) {
+      debouncedFetchSuggestions(newQueryValue);
     }
-  }, [selectedDataset, queryValue, dispatch]);
+  };
 
   useEffect(() => {
     if (suggestionData) {

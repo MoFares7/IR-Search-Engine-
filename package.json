@@ -21,6 +21,7 @@
     "axios": "^1.6.8",
     "chart.js": "4.3.0",
     "chroma-js": "2.4.2",
+    "lodash": "^4.17.21",
     "lottie-react": "^2.4.0",
     "prop-types": "15.8.1",
     "qrcode.react": "^3.1.0",

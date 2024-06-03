@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { Box, Grid, Snackbar, Typography } from '@mui/material';
+import { Box, Grid, Snackbar, Typography, Pagination } from '@mui/material';
 import { useLocation } from 'react-router-dom';
 import colors from '../../../../assets/theme/base/colors';
 import Lottie from 'lottie-react';
@@ -11,9 +11,11 @@ import ResultCard from '../components/result_card';
 import emptyData from '../../../../assets/lottie/empty.json';
 import { querySimilaryResultService } from '../../service/similary_result_service';
 
+const ITEMS_PER_PAGE = 10;
+
 const ResultPage = () => {
         const dispatch = useDispatch();
-        const { data, similarityData } = useSelector(state => state.queryService);
+        const { data } = useSelector(state => state.queryService);
         const loadingData = useSelector(state => state.querySimilaryResultService.loading);
         const location = useLocation();
         const navigate = useNavigate();
@@ -21,6 +23,7 @@ const ResultPage = () => {
         const [loadingCard, setLoadingCard] = useState(null);
         const [errorSnackbarOpen, setErrorSnackbarOpen] = useState(false);
         const [errorMessage, setErrorMessage] = useState('');
+        const [currentPage, setCurrentPage] = useState(1);
 
         const handleFetchSimilarity = (id, doc_id, doc_content, cluster, index) => {
                 setLoadingCard(id);
@@ -47,6 +50,13 @@ const ResultPage = () => {
                 setErrorSnackbarOpen(false);
         };
 
+        const handlePageChange = (event, value) => {
+                setCurrentPage(value);
+        };
+
+        const pageCount = Math.ceil(data.length / ITEMS_PER_PAGE);
+        const displayedData = data.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
+
         return (
                 <Box>
                         <Box sx={{ p: 1, display: 'flex', alignItems: 'center', justifyContent: 'space-between', backgroundColor: colors.grey[200] }}>
@@ -56,8 +66,8 @@ const ResultPage = () => {
                                 </Box>
                         </Box>
                         <Grid container spacing={2} sx={{ p: 3, justifyContent: 'center', textAlign: 'center' }}>
-                                {data && data.length > 0 ? (
-                                        data.slice(0, 25).map((item) => (
+                                {displayedData && displayedData.length > 0 ? (
+                                        displayedData.map((item) => (
                                                 <Box sx={{ width: '75%' }} key={item._id}>
                                                         <ResultCard
                                                                 id={item._id}
@@ -84,6 +94,14 @@ const ResultPage = () => {
                                         </Box>
                                 )}
                         </Grid>
+                        {data && data.length > 0 && (
+                                <Pagination
+                                        count={pageCount}
+                                        page={currentPage}
+                                        onChange={handlePageChange}
+                                        sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}
+                                />
+                        )}
                         <Snackbar
                                 open={errorSnackbarOpen}
                                 autoHideDuration={4000}

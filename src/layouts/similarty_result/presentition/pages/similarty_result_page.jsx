@@ -1,5 +1,5 @@
-import React from 'react';
-import { Box, Grid, Typography } from '@mui/material';
+import React, { useState } from 'react';
+import { Box, Grid, Typography, Pagination } from '@mui/material';
 import { useLocation } from 'react-router-dom';
 import colors from '../../../../assets/theme/base/colors';
 import Lottie from 'lottie-react';
@@ -8,21 +8,31 @@ import typography from '../../../../assets/theme/base/typography';
 import emptyData from '../../../../assets/lottie/empty.json';
 import ResultCard from '../../../result/preseintistion/components/result_card';
 
+const ITEMS_PER_PAGE = 10;
+
 const SimilartyResultPage = () => {
         const location = useLocation();
         const { similarityData } = location.state || {};
+        const [currentPage, setCurrentPage] = useState(1);
+
+        const handlePageChange = (event, value) => {
+                setCurrentPage(value);
+        };
+
+        const pageCount = similarityData ? Math.ceil(similarityData.length / ITEMS_PER_PAGE) : 0;
+        const displayedData = similarityData ? similarityData.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE) : [];
 
         return (
                 <Box>
                         <Box sx={{ p: 1, display: 'flex', alignItems: 'center', justifyContent: 'space-between', backgroundColor: colors.grey[200] }}>
-                                <Typography typography={typography.d6} sx={{ px: 3, color: colors.black.main }}> Similar Documents</Typography>
+                                <Typography typography={typography.d6} sx={{ px: 3, color: colors.black.main }}>Similar Documents</Typography>
                                 <Box sx={{ display: 'flex', justifyContent: 'end' }}>
                                         <Lottie autoPlay animationData={results} style={{ width: 120, height: 120 }} />
                                 </Box>
                         </Box>
                         <Grid container spacing={2} sx={{ p: 3, justifyContent: 'center', textAlign: 'center' }}>
-                                {similarityData && similarityData.length > 0 ? (
-                                        similarityData.map((item, index) => (
+                                {displayedData && displayedData.length > 0 ? (
+                                        displayedData.map((item, index) => (
                                                 <Box key={index} sx={{ width: '75%' }}>
                                                         <ResultCard
                                                                 id={item._id}
@@ -46,6 +56,14 @@ const SimilartyResultPage = () => {
                                         </Box>
                                 )}
                         </Grid>
+                        {similarityData && similarityData.length > 0 && (
+                                <Pagination
+                                        count={pageCount}
+                                        page={currentPage}
+                                        onChange={handlePageChange}
+                                        sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}
+                                />
+                        )}
                 </Box>
         );
 };
