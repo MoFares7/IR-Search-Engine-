@@ -14,8 +14,8 @@ const SimilartyResultPage = () => {
 
         return (
                 <Box>
-                        <Box sx={{ p: 1, display: 'flex', alignItems: 'center', justifyContent: 'space-between', backgroundColor: colors.gradients.info.state }}>
-                                <Typography typography={typography.d6} sx={{ px: 3 }}>Similarity Result</Typography>
+                        <Box sx={{ p: 1, display: 'flex', alignItems: 'center', justifyContent: 'space-between', backgroundColor: colors.grey[200] }}>
+                                <Typography typography={typography.d6} sx={{ px: 3, color: colors.black.main }}> Similar Documents</Typography>
                                 <Box sx={{ display: 'flex', justifyContent: 'end' }}>
                                         <Lottie autoPlay animationData={results} style={{ width: 120, height: 120 }} />
                                 </Box>

@@ -14,7 +14,6 @@ import { querySimilaryResultService } from '../../service/similary_result_servic
 const ResultPage = () => {
         const dispatch = useDispatch();
         const { data, similarityData } = useSelector(state => state.queryService);
-        const dataResult = useSelector(state => state.querySimilaryResultService);
         const loadingData = useSelector(state => state.querySimilaryResultService.loading);
         const location = useLocation();
         const navigate = useNavigate();
@@ -36,7 +35,6 @@ const ResultPage = () => {
                         }
                 })).then((action) => {
                         if (action.payload && action.payload.length > 0) {
-                                // Process the response data
                                 navigate('/similarty-result', { state: { similarityData: action.payload } });
                         } else {
                                 setErrorMessage(action.payload.detail.msg || 'An error occurred');
@@ -51,8 +49,8 @@ const ResultPage = () => {
 
         return (
                 <Box>
-                        <Box sx={{ p: 1, display: 'flex', alignItems: 'center', justifyContent: 'space-between', backgroundColor: colors.gradients.info.state }}>
-                                <Typography typography={typography.d6} sx={{ px: 3 }}>Search Engine</Typography>
+                        <Box sx={{ p: 1, display: 'flex', alignItems: 'center', justifyContent: 'space-between', backgroundColor: colors.grey[200] }}>
+                                <Typography typography={typography.d4} sx={{ px: 3, color: colors.black.main }}>Hoop</Typography>
                                 <Box sx={{ display: 'flex', justifyContent: 'end' }}>
                                         <Lottie autoPlay animationData={results} style={{ width: 120, height: 120 }} />
                                 </Box>

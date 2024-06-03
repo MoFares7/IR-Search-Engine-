@@ -1,7 +1,7 @@
 
 const colors = {
   background: {
-    default: "#2f2f2f",
+    default: "#f0f2f5",
   },
 
   text: {
@@ -35,8 +35,8 @@ const colors = {
   },
 
   info: {
-    main: "#004996",
-    focus: "#1662C4",
+    main: "#dee2e6",
+    focus: "#dee2e6",
   },
 
   success: {

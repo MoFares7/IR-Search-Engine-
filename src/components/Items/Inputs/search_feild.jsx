@@ -158,7 +158,6 @@ const SearchField = ({ value, onChange, onSearch, isLoading, loadingSuggestions,
         return (
                 <Box sx={{ position: 'relative', width: '100%' }}>
                         <Box sx={{
-                                // backgroundColor: 'red',
                                 display: 'flex',
                                 alignItems: 'center',
                                 pb: 5,
@@ -172,18 +171,21 @@ const SearchField = ({ value, onChange, onSearch, isLoading, loadingSuggestions,
                                         placeholder='Search in our dataset'
                                         InputProps={{
                                                 startAdornment: (
-                                                        <SearchIcon style={{ color: colors.primary.main }} />
+                                                        <SearchIcon style={{ color: colors.white.main }} />
                                                 ),
                                                 sx: {
+                                                        color: colors.grey[200],
                                                         width: '100%',
                                                         '&::placeholder': {
-                                                                color: colors.primary.main,
+                                                                color: colors.grey[200],
                                                                 opacity: 1,
+
                                                         },
                                                 },
                                         }}
                                         sx={{
-                                                backgroundColor: colors.grey[200],
+                                                backgroundColor: colors.black.main,
+                                                color: colors.grey[200],
                                                 borderTopRightRadius: 0,
                                                 borderBottomRightRadius: suggestions.length > 0 ? 0 : 0,
                                                 borderTopLeftRadius: 15,
@@ -195,7 +197,7 @@ const SearchField = ({ value, onChange, onSearch, isLoading, loadingSuggestions,
                                                         borderBottomLeftRadius: suggestions.length > 0 ? 0 : 0,
                                                 },
                                                 '& .MuiInputBase-input::placeholder': {
-                                                        color: colors.dark.main,
+                                                        color: colors.grey[200],
                                                         opacity: 1,
                                                 },
                                         }}
@@ -205,22 +207,25 @@ const SearchField = ({ value, onChange, onSearch, isLoading, loadingSuggestions,
                                         onClick={onSearch}
                                         disabled={value === null || value === ''}
                                         sx={{
-                                                height: 45,
-                                                backgroundColor: colors.gradients.info.state,
-                                                color: colors.white.main,
+                                                height: 43,
+                                                backgroundColor: colors.grey[400],
+                                                color: colors.black.main,
                                                 borderTopLeftRadius: 0,
                                                 borderBottomLeftRadius: 0,
-                                                borderTopRightRadius: 16,
+                                                borderTopRightRadius: 15,
                                                 borderBottomRightRadius: suggestions.length > 0 ? 0 : 0,
-                                                marginLeft: 0,
+                                                marginLeft: -0.1,
+                                                '&:hover': {
+                                                        backgroundColor: colors.grey[400],
+                                                },
                                                 '&:disabled': {
-                                                        backgroundColor: colors.gradients.info.state,
-                                                        color: colors.white.main,
+                                                        backgroundColor: colors.grey[300],
+                                                        color: colors.black.main,
                                                         cursor: 'not-allowed'
                                                 }
                                         }}
                                 >
-                                        {isLoading ? <CircularProgress size={24} sx={{ color: colors.white.main }} /> : 'Search'}
+                                        {isLoading ? <CircularProgress size={24} sx={{ color: colors.black.main }} /> : 'Search'}
                                 </Button>
                         </Box>
 
@@ -233,7 +238,7 @@ const SearchField = ({ value, onChange, onSearch, isLoading, loadingSuggestions,
                                                 position: 'absolute',
                                                 width: '100%',
                                                 top: '50px',
-                                                backgroundColor: colors.grey[200],
+                                                backgroundColor: colors.black.main,
                                                 borderRadius: 4,
                                                 borderTopRightRadius: 0,
                                                 borderBottomRightRadius: suggestions.length > 0 ? 0 : 0,
@@ -242,18 +247,19 @@ const SearchField = ({ value, onChange, onSearch, isLoading, loadingSuggestions,
                                         }}
                                 >
                                         {loadingSuggestions ? (
-                                                <MDTypography sx={{ m: 1 }} typography={typography.body2}>Loading...</MDTypography>
+                                                <MDTypography sx={{ m: 1, color: colors.grey[200] }} typography={typography.body2}>Loading...</MDTypography>
                                         ) : (
                                                 suggestions.map((suggestion, index) => (
                                                         <Box
                                                                 key={index}
                                                                 sx={{
+                                                                        color: colors.grey[200],
                                                                         fontSize: '15px',
                                                                         py: '5px',
                                                                         px: '10px',
                                                                         cursor: 'pointer',
                                                                         '&:hover': {
-                                                                                backgroundColor: colors.grey[200],
+                                                                                backgroundColor: colors.grey[800],
                                                                         },
                                                                 }}
                                                                 onClick={() => handleSuggestionClick(suggestion)}

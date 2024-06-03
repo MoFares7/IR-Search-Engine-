@@ -74,23 +74,22 @@ function HomeSearchPage() {
     }
   }, [suggestionData, suggestionError]);
 
-  console.log("length: " + suggestions.length);
   return (
     <PageLayout>
       <MDBox
         position="absolute"
-        width="100%"
-        minHeight="100vh"
+        // width="100%"
+        // minHeight="100vh"
         sx={{
-          backgroundColor: '#2f2f2f'
+          backgroundColor: colors.grey[200]
         }}
       />
       <MenuAppBar setSelectedDataset={setSelectedDataset} setSelectedModel={setSelectedModel} />
       <MDBox px={1} width="100%" height="90vh" mx="auto">
         <Grid container spacing={1} justifyContent="center" alignItems="center" height="100%">
-          <Card sx={{ px: 5, width: '70%', backgroundColor: '#2f2f2f' }}>
+          <Box sx={{ display: 'block', px: 15, width: '70%', backgroundColor: colors.grey[200] }}>
             <Box sx={{ py: 5, display: 'flex', justifyContent: 'center' }}>
-              <Typography typography={typography.d4} sx={{ pb: 2, color: colors.white.main, fontWeight: 'bold' }}>Search Engine</Typography>
+              <Typography typography={typography.d1} sx={{ pb: 2, color: colors.black.main, fontWeight: 'bold' }}>Hoop</Typography>
             </Box>
             <SearchField
               value={queryValue}
@@ -100,7 +99,7 @@ function HomeSearchPage() {
               loadingSuggestions={loadingSuggestionsAPI}
               suggestions={suggestions}
             />
-          </Card>
+          </Box>
         </Grid>
       </MDBox>
 

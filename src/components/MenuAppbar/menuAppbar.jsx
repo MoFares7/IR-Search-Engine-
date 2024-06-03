@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { AppBar, Toolbar, IconButton, Menu, MenuItem, Checkbox, FormControlLabel } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import colors from '../../assets/theme/base/colors';
+import { Settings } from '@mui/icons-material';
 
 const MenuAppBar = ({ setSelectedDataset, setSelectedModel }) => {
         const [anchorEl, setAnchorEl] = useState(null);
@@ -82,7 +83,7 @@ const MenuAppBar = ({ setSelectedDataset, setSelectedModel }) => {
                                                 aria-label="menu"
                                                 onClick={handleMenuOpen}
                                         >
-                                                <MenuIcon sx={{ color: colors.white.main }} />
+                                                <Settings sx={{ color: colors.black.main }} />
                                         </IconButton>
                                 </Toolbar>
                         </AppBar>
@@ -99,6 +100,7 @@ const MenuAppBar = ({ setSelectedDataset, setSelectedModel }) => {
                                                                 checked={checkedItems.antique}
                                                                 onChange={handleCheckboxChange}
                                                                 name="antique"
+                                                                // sx={{ color: colors.black.main }}
                                                         />
                                                 }
                                                 label="ANTIQUE"
