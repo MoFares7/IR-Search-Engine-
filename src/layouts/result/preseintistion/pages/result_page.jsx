@@ -26,7 +26,7 @@ const ResultPage = () => {
                 setLoadingCard(id);
                 dispatch(querySimilaryResultService({
                         payload: {
-                                dataset: selectedDataset,
+                                dataset: selectedDataset === 'wikipedia' ? 'wiki' : 'antique',
                                 id,
                                 doc_id,
                                 doc_content,
